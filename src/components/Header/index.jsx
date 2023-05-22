@@ -1,96 +1,103 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-
-import TaskLogo from "../../assets/task-deadline-4721444-3926032.webp"
-import styles from "./header.module.css"
+import React from 'react';
+import { useState, useEffect } from 'react';
+import ReactFlagsSelect from "react-flags-select";
+import styles from "./header.module.css";
 import globalLanguages from '../../utilities/multipleLanguage';
 
-import { AiOutlinePlusCircle } from 'react-icons/ai';
-
 export function Header() {
-  const [placeholderLang, setPlaceholderLang] = useState(globalLanguages.form.placeholder.en)
-  const [buttonSpanLang, setButtonSpanLang] = useState(globalLanguages.form.button.span.en)
-  const [taskInput, setTaskInput] = useState("")
-
-  const CURRENT_LANG = localStorage.getItem("currentLang")
+  const { form } = globalLanguages;
+  const {placeholder, button} = form;
+  const [placeholderLang, setPlaceholderLang] = useState(placeholder.en);
+  const [buttonSpanLang, setButtonSpanLang] = useState(button.span.en);
+  const [taskInput, setTaskInput] = useState("");
+  const CURRENT_LANG = localStorage.getItem("currentLang") || "US";
 
   useEffect(() => {
+    // Update placeholder and button text based on the selected language
     switch (CURRENT_LANG) {
-      case "en":
-        setPlaceholderLang(globalLanguages.form.placeholder.en)
-        setButtonSpanLang(globalLanguages.form.button.span.en)
+      case "US":
+        setPlaceholderLang(placeholder.en);
+        setButtonSpanLang(button.span.en);
         break;
-    
-      case "fr":
-        setPlaceholderLang(globalLanguages.form.placeholder.fr)
-        setButtonSpanLang(globalLanguages.form.button.span.fr)
+
+      case "FR":
+        setPlaceholderLang(placeholder.fr);
+        setButtonSpanLang(button.span.fr);
         break;
-      
-      case "mg":
-        setPlaceholderLang(globalLanguages.form.placeholder.mg)
-        setButtonSpanLang(globalLanguages.form.button.span.mg)
+
+      case "MG":
+        setPlaceholderLang(placeholder.mg);
+        setButtonSpanLang(button.span.mg);
+        break;
+
+      default:
+        setPlaceholderLang(placeholder.en);
+        setButtonSpanLang(button.span.en);
+        break;
     }
-  }, [])
+  }, [CURRENT_LANG]); // re-run effect when CURRENT_LANG changes
 
-  function handleChangeLanguage(event) {
-    localStorage.setItem("currentLang", event.target.value)
+  function handleChangeLanguage(countryCode) {
+    // update the currently selected language in local storage
+    localStorage.setItem("currentLang", countryCode);
 
-    switch (event.target.value) {
-      case "en":
-        setPlaceholderLang(globalLanguages.form.placeholder.en)
-        setButtonSpanLang(globalLanguages.form.button.span.en)
+    // update placeholder and button text based on the selected language
+    switch (countryCode) {
+      case "US":
+        setPlaceholderLang(placeholder.en);
+        setButtonSpanLang(button.span.en);
         break;
-    
-      case "fr":
-        setPlaceholderLang(globalLanguages.form.placeholder.fr)
-        setButtonSpanLang(globalLanguages.form.button.span.fr)
+
+      case "FR":
+        setPlaceholderLang(placeholder.fr);
+        setButtonSpanLang(button.span.fr);
         break;
-      
-      case "mg":
-        setPlaceholderLang(globalLanguages.form.placeholder.mg)
-        setButtonSpanLang(globalLanguages.form.button.span.mg)
+
+      case "MG":
+        setPlaceholderLang(placeholder.mg);
+        setButtonSpanLang(button.span.mg);
+        break;
+
+      default:
+        setPlaceholderLang(placeholder.en);
+        setButtonSpanLang(button.span.en);
+        break;
     }
   }
 
   function OnChangeTaskInput(event) {
-    setTaskInput(event.target.value)
+    // update the task input state when the input value changes
+    setTaskInput(event.target.value);
   }
 
-  function handleSubmit (event) {
-    event.preventDefault()
-    setTaskInput("")
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // clear the task input state when the form is submitted
+    setTaskInput("");
   }
 
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <img
-          src={TaskLogo}
-          width={50}
-          alt="TaskLogo"
-        />
-
-        <h1 className={styles.title}>todo</h1>
+        <h1 className={styles.title}>Todo App</h1>
       </div>
 
       <form onSubmit={handleSubmit} className={styles.taskForm}>
-        <select 
-          name="change-language" 
-          id="changeLanguage" 
-          onChange={handleChangeLanguage}  
-          defaultValue={CURRENT_LANG}
-        >
-          <option value="en">EN</option>
-          <option value="fr">FR</option>
-          <option value="mg">MG</option>
-        </select>
+        <ReactFlagsSelect
+          className={styles.FlagsSelectOption}
+          selected={CURRENT_LANG}
+          onSelect={handleChangeLanguage}
+          countries={["US", "FR", "MG"]}
+          customLabels={{ US: "EN", FR: "FR", MG: "MG" }}
+        />
 
         <input type="text" placeholder={placeholderLang} onChange={OnChangeTaskInput} value={taskInput} />
 
-        <button>{buttonSpanLang} <AiOutlinePlusCircle size={20}/></button>
+        <button className={styles.taskFormButton}>
+          {buttonSpanLang}
+        </button>
       </form>
-
-     
     </header>
-  )
+  );
 }
