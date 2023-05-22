@@ -1,5 +1,16 @@
+:root {
+    --primary-color: #1e6f9f;
+    --secondary-color: #de466c;
+    --white-color-one: #fff;
+    --bg-color-dark-one: #0D0D0D;
+    --bg-color-dark-two: #262626;
+    --bg-color-dark-three: #808080;
+    --header-height: 200px;
+    --main-border-radius: 8px;
+}
+
 .header {
-    background: #0D0D0D;
+    background: var(--bg-color-dark-one);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,9 +27,13 @@
 }
 
 .headerContent .title {
-    font-weight: bold;
-    color: #fff;
-    text-transform: capitalize;
+    font-size: 66px;
+    line-height: 80px;
+    font-weight: 800;
+    letter-spacing: 12px;
+    background: url(/src/assets/blurred-blue-gradient-wallpaper-preview.jpg) 0 0 / cover no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .taskForm {
@@ -35,32 +50,56 @@
 .taskForm input {
     height: 100%;
     flex: 1;
-    color: #fff;
-    background: #262626;
-    border: 1px solid #0D0D0D;
-    border-radius: 8px;
+    color: var(--white-color-one);
+    background: var(--bg-color-dark-two);
+    border: 1px solid var(--bg-color-dark-one);
+    border-radius: var(--main-border-radius);
     padding: 0 16px;
     font-size: 16px;
 }
 
 .taskForm input:focus {
-    outline: 2px solid #1E6F9F;
+    outline: 2px solid var(--primary-color);
 }
 
 .taskForm input::placeholder {
-    color: #808080;
+    color: var(--bg-color-dark-three);
 }
 
-.taskForm button {
+.taskForm button.taskFormButton {
     height: 100%;
-    background: #1E6F9F;
-    color: #fff;
+    background: var(--primary-color);
+    color: var(--white-color-one);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--main-border-radius);
     display: flex;
     align-items: center;
     gap: 6px;
     padding: 0 16px;
     font-size: 14px;
     font-weight: bold;
+}
+
+.FlagsSelectOption {
+    padding-bottom: 0px !important;
+    border-radius: var(--main-border-radius) !important; 
+}
+
+.FlagsSelectOption button {
+    height: 100%;
+    color: var(--bg-color-dark-three);
+    background: var(--bg-color-dark-two);
+    width: 105px;
+}
+
+.FlagsSelectOption button:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.FlagsSelectOption ul {
+    background: var(--bg-color-dark-one);
+}
+
+.FlagsSelectOption ul li:hover {
+    background-color: var(--bg-color-dark-two);
 }
