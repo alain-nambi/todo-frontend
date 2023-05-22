@@ -10,7 +10,10 @@
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "react-country-flag": "2.3.0",
+    "react-flagpack": "0.1.1",
+    "react-flags-select": "2.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

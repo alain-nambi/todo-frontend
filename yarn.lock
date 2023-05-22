@@ -353,6 +353,11 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+classnames@^2.2.6:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz"
@@ -435,6 +440,11 @@ estree-walker@^2.0.1:
   resolved "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
+flagpack-core@^1.0.0:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/flagpack-core/-/flagpack-core-1.1.2.tgz"
+  integrity sha512-brm/LJf/xxiwRnjdThPsxaRZsbcN0fjPX4WMdKfuwJYOt3pdVw1pfP2dTBh743qqkw4CQzXTfEWjRDN0KvZ/qA==
+
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -484,7 +494,7 @@ json5@^2.2.1:
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz"
   integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
 
-loose-envify@^1.1.0:
+loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -505,6 +515,11 @@ node-releases@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.5.tgz"
   integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
+
+object-assign@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
+  integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
 
 path-parse@^1.0.7:
   version "1.0.7"
@@ -530,7 +545,21 @@ postcss@^8.4.13:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-react-dom@^18.0.0:
+prop-types@^15.5.4:
+  version "15.8.1"
+  resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
+react-country-flag@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/react-country-flag/-/react-country-flag-2.3.0.tgz"
+  integrity sha512-Lb2nhMoTOxNjlQoun3iPwqIgpluSyzr8jN45cN0mXYbeDi10/MhGJKZa1cvgyrnfCtOh/IHdhA0MkSuls78bBw==
+
+"react-dom@^15.0.0 || ^16.0.0", react-dom@^18.0.0, react-dom@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -538,17 +567,36 @@ react-dom@^18.0.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-flagpack@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/react-flagpack/-/react-flagpack-0.1.1.tgz"
+  integrity sha512-cB2IGYkYUVPAPsteBjReHFGquvnkQk0MDzHSfvvCYjh1r4kIEwr//J65JNwF0DRF+W3PiQLcw/bqDRf/6bHgSg==
+  dependencies:
+    flagpack-core "^1.0.0"
+
+react-flags-select@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/react-flags-select/-/react-flags-select-2.0.2.tgz"
+  integrity sha512-UxG1EXq/0xvx5PDMlj5YZzNMuCJkAKybpf+gGgsy5dxXr2eZtkeCAz0D9LGfySaIr2eza6eOtt+Z+t8hdiMnug==
+  dependencies:
+    classnames "^2.2.6"
+
 react-icons@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
   integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
+
+react-is@^16.13.1:
+  version "16.13.1"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-refresh@^0.13.0:
   version "0.13.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.13.0.tgz"
   integrity sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==
 
-react@*, react@^18.0.0, react@^18.2.0:
+react@*, "react@^15.0.0 || ^16.0.0", react@^16.8.*, react@^18.0.0, react@^18.2.0, react@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
