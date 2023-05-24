@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import ReactFlagsSelect from "react-flags-select";
 import styles from "./header.module.css";
 import globalLanguages from '../../utilities/multipleLanguage';
+import { AiOutlineSend } from "react-icons/ai";
 
 export function Header() {
   const { form } = globalLanguages;
@@ -92,11 +93,17 @@ export function Header() {
           customLabels={{ US: "EN", FR: "FR", MG: "MG" }}
         />
 
-        <input type="text" placeholder={placeholderLang} onChange={OnChangeTaskInput} value={taskInput} />
+        <div className={styles.taskFormContainer}>
+          <input type="text" placeholder={placeholderLang} onChange={OnChangeTaskInput} value={taskInput} />
 
-        <button className={styles.taskFormButton}>
-          {buttonSpanLang}
-        </button>
+          <button className={styles.taskFormButtonMobile} title={buttonSpanLang}>
+            <AiOutlineSend size={25} />
+          </button>
+
+          <button className={styles.taskFormButtonLaptop}>
+            <span>{buttonSpanLang}</span>
+          </button>
+        </div>
       </form>
     </header>
   );
