@@ -122,8 +122,12 @@
 
 /* Styles pour les écrans inférieurs à 768px */
 @media (max-width: 767px) {
+    .headerContent .title {
+        text-align: center;
+    }
+
     .FlagsSelectOption {
-        position: fixed;
+        position: fixed !important;
         top: 16px;
         right: 0;
         height: 45px;
