@@ -27,7 +27,7 @@
 }
 
 .headerContent .title {
-    font-size: 66px;
+    font-size: 45px;
     line-height: 80px;
     font-weight: 800;
     letter-spacing: 12px;
@@ -81,10 +81,6 @@
     font-weight: bold;
 }
 
-.taskForm button.taskFormButtonMobile {
-    display: none;
-}
-
 .taskFormContainer {
     display: flex;
     flex: 1;
@@ -132,14 +128,6 @@
         right: 0;
         height: 45px;
         margin: 0 1rem;
-    }
-
-    .taskForm button.taskFormButtonLaptop {
-        display: none;
-    }
-
-    .taskForm button.taskFormButtonMobile {
-        display: flex;
     }
 }
 

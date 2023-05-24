@@ -5,6 +5,8 @@ import styles from "./header.module.css";
 import globalLanguages from '../../utilities/multipleLanguage';
 import { AiOutlineSend } from "react-icons/ai";
 
+import { useMediaQuery } from 'react-responsive'
+
 export function Header() {
   const { form } = globalLanguages;
   const {placeholder, button} = form;
@@ -12,6 +14,9 @@ export function Header() {
   const [buttonSpanLang, setButtonSpanLang] = useState(button.span.en);
   const [taskInput, setTaskInput] = useState("");
   const CURRENT_LANG = localStorage.getItem("currentLang") || "US";
+
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 768px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
   useEffect(() => {
     // Update placeholder and button text based on the selected language
@@ -66,7 +71,7 @@ export function Header() {
     }
   }
 
-  function OnChangeTaskInput(event) {
+  function handleInputChange(event) {
     // update the task input state when the input value changes
     setTaskInput(event.target.value);
   }
@@ -94,15 +99,26 @@ export function Header() {
         />
 
         <div className={styles.taskFormContainer}>
-          <input type="text" placeholder={placeholderLang} onChange={OnChangeTaskInput} value={taskInput} />
+          <input 
+            type="text" 
+            placeholder={placeholderLang} 
+            onChange={handleInputChange} 
+            value={taskInput} 
+          />
 
-          <button className={styles.taskFormButtonMobile} title={buttonSpanLang}>
-            <AiOutlineSend size={25} />
-          </button>
+          {
+            isTabletOrMobile &&
+            <button className={styles.taskFormButtonMobile}>
+              <AiOutlineSend size={25} />
+            </button>
+          }
 
-          <button className={styles.taskFormButtonLaptop}>
-            <span>{buttonSpanLang}</span>
-          </button>
+          {
+            isDesktopOrLaptop &&
+            <button className={styles.taskFormButtonLaptop}>
+              <span>{buttonSpanLang}</span>
+            </button>
+          }
         </div>
       </form>
     </header>
