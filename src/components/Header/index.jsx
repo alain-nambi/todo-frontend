@@ -6,39 +6,34 @@ import globalLanguages from '../../utilities/multipleLanguage';
 import { AiOutlineSend } from "react-icons/ai";
 
 import { useMediaQuery } from 'react-responsive'
+import {useTranslation} from "react-i18next";
 
 export function Header() {
-  const { form } = globalLanguages;
-  const {placeholder, button} = form;
-  const [placeholderLang, setPlaceholderLang] = useState(placeholder.en);
-  const [buttonSpanLang, setButtonSpanLang] = useState(button.span.en);
   const [taskInput, setTaskInput] = useState("");
   const CURRENT_LANG = localStorage.getItem("currentLang") || "US";
 
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 768px)' })
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
+  const [t, i18n] = useTranslation('common'); 
+
   useEffect(() => {
     // Update placeholder and button text based on the selected language
     switch (CURRENT_LANG) {
       case "US":
-        setPlaceholderLang(placeholder.en);
-        setButtonSpanLang(button.span.en);
+        i18n.changeLanguage('en')
         break;
 
       case "FR":
-        setPlaceholderLang(placeholder.fr);
-        setButtonSpanLang(button.span.fr);
+        i18n.changeLanguage('fr')
         break;
 
       case "MG":
-        setPlaceholderLang(placeholder.mg);
-        setButtonSpanLang(button.span.mg);
+        i18n.changeLanguage('mg')
         break;
 
       default:
-        setPlaceholderLang(placeholder.en);
-        setButtonSpanLang(button.span.en);
+        i18n.changeLanguage('en')
         break;
     }
   }, [CURRENT_LANG]); // re-run effect when CURRENT_LANG changes
@@ -50,23 +45,19 @@ export function Header() {
     // update placeholder and button text based on the selected language
     switch (countryCode) {
       case "US":
-        setPlaceholderLang(placeholder.en);
-        setButtonSpanLang(button.span.en);
+        i18n.changeLanguage('en')
         break;
 
       case "FR":
-        setPlaceholderLang(placeholder.fr);
-        setButtonSpanLang(button.span.fr);
+        i18n.changeLanguage('fr')
         break;
 
       case "MG":
-        setPlaceholderLang(placeholder.mg);
-        setButtonSpanLang(button.span.mg);
+        i18n.changeLanguage('mg')
         break;
 
       default:
-        setPlaceholderLang(placeholder.en);
-        setButtonSpanLang(button.span.en);
+        i18n.changeLanguage('en')
         break;
     }
   }
@@ -101,7 +92,7 @@ export function Header() {
         <div className={styles.taskFormContainer}>
           <input 
             type="text" 
-            placeholder={placeholderLang} 
+            placeholder={t('add_task')} 
             onChange={handleInputChange} 
             value={taskInput} 
           />
@@ -116,7 +107,7 @@ export function Header() {
           {
             isDesktopOrLaptop &&
             <button className={styles.taskFormButtonLaptop}>
-              <span>{buttonSpanLang}</span>
+              <span>{t('create')}</span>
             </button>
           }
         </div>
