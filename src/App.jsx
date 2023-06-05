@@ -1,8 +1,8 @@
 import './styles/global.css'
 import { useEffect, useState } from 'react';
-import { Header } from './components/Header/header'
+import { Header } from './components/Header/Header'
 import { TaskForm } from "./components/Tasks/TaskForm";
-import { TaskList } from "./components/Tasks/taskList";
+import { TaskList } from "./components/Tasks/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([])
