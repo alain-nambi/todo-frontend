@@ -1,12 +1,11 @@
 .taskForm {
-    position: absolute;
+    position: relative;
     height: 50px;
-    bottom: -25px;
+    bottom: 25px;
     width: 100%;
     max-width: 736px;
     display: flex;
     gap: 8px;
-    padding: 0 1rem;
 }
 
 .taskForm input {
@@ -47,4 +46,13 @@
     display: flex;
     flex: 1;
     gap: 8px;
+}
+
+.taskList {
+    height: 50px;
+    color: var(--white-color-one);
+    background: var(--bg-color-dark-two);
+    max-width: 736px;
+    padding: 0 1rem;
+    margin: 0 auto;
 }

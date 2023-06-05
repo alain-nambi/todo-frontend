@@ -1,7 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+
+// React Flags Selection
 import ReactFlagsSelect from "react-flags-select";
+
+// CSS
 import styles from "./language.module.css";
+
+// Internationalization
 import { useTranslation } from "react-i18next";
 
 export function Language() {

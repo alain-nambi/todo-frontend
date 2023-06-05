@@ -1,5 +1,6 @@
-import React from 'react';
-import { HandleTask } from '../Tasks/handleTask';
+import React, { useState } from "react";
+
+// CSS
 import styles from "./header.module.css";
 
 export function Header() {
@@ -8,8 +9,6 @@ export function Header() {
       <div className={styles.headerContent}>
         <h1 className={styles.title}>Todo App</h1>
       </div>
-
-      <HandleTask />
     </header>
   );
 }
