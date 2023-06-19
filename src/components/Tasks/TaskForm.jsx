@@ -13,6 +13,9 @@ import { useTranslation } from "react-i18next";
 // Components
 import { Language } from "../Language/Language";
 
+// Utilities
+import { parseTimeStamp } from "../../utilities/utilities";
+
 // CSS
 import styles from "./tasks.module.css";
 
@@ -25,19 +28,7 @@ export function TaskForm({ addTask }) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   // Set up internationalization using react-i18next
-  const [t, i18n] = useTranslation("common");
-
-  // Function to convert a timestamp into a human-readable date string
-  function parseTimeStamp(timestamp) {
-    const currentDateToString = new Date(timestamp);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const localeDateString = currentDateToString.toLocaleDateString(
-      "fr-FR",
-      options
-    );
-    const localeTimeString = currentDateToString.toLocaleTimeString("fr-FR");
-    return `${localeDateString}, ${localeTimeString}`;
-  }
+  const { t } = useTranslation("common");
 
   // Event handler for input change - updates the new task input state when the input value changes
   function handleInputChange(event) {
@@ -72,14 +63,14 @@ export function TaskForm({ addTask }) {
 
           {/* Render mobile/tablet button if on smaller viewport */}
           {isTabletOrMobile && (
-            <button className={styles.taskFormButtonMobile}>
+            <button type="submit" className={styles.taskFormButtonMobile}>
               <AiOutlineSend size={25} />
             </button>
           )}
 
           {/* Render desktop/laptop button if on larger viewport */}
           {isDesktopOrLaptop && (
-            <button className={styles.taskFormButtonLaptop}>
+            <button type="submit" className={styles.taskFormButtonLaptop}>
               <span>{t("create")}</span>
             </button>
           )}
