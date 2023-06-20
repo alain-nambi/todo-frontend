@@ -7,11 +7,14 @@ import ReactFlagsSelect from "react-flags-select";
 // CSS
 import styles from "./language.module.css";
 
+// Utilities
+import { LOCAL_STORAGE_LANG_KEY } from "../../utilities/globalVariables";
+
 // Internationalization
 import { useTranslation } from "react-i18next";
 
 export function Language() {
-  const CURRENT_LANG = localStorage.getItem("currentLang") || "US";
+  const CURRENT_LANG = localStorage.getItem(LOCAL_STORAGE_LANG_KEY) || "US";
   const [t, i18n] = useTranslation("common");
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export function Language() {
 
   function handleChangeLanguage(countryCode) {
     // update the currently selected language in local storage
-    localStorage.setItem("currentLang", countryCode);
+    localStorage.setItem(LOCAL_STORAGE_LANG_KEY, countryCode);
 
     // update placeholder and button text based on the selected language
     switch (countryCode) {

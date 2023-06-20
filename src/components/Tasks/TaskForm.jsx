@@ -16,7 +16,7 @@ import { Language } from "../Language/Language";
 // CSS
 import styles from "./tasks.module.css";
 
-export function TaskForm({ addTask }) {
+export function TaskForm({ handleAddtask }) {
   // Declare state for new task and set initial values
   const [newTask, setNewTask] = useState({ title: "", date: null });
 
@@ -25,40 +25,24 @@ export function TaskForm({ addTask }) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   // Set up internationalization using react-i18next
-  const [t, i18n] = useTranslation("common");
-
-  // Function to convert a timestamp into a human-readable date string
-  function parseTimeStamp(timestamp) {
-    const currentDateToString = new Date(timestamp);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const localeDateString = currentDateToString.toLocaleDateString(
-      "fr-FR",
-      options
-    );
-    const localeTimeString = currentDateToString.toLocaleTimeString("fr-FR");
-    return `${localeDateString}, ${localeTimeString}`;
-  }
+  const { t } = useTranslation("common");
 
   // Event handler for input change - updates the new task input state when the input value changes
   function handleInputChange(event) {
-    setNewTask({
-      ...newTask,
-      title: event.target.value,
-      date: parseTimeStamp(Date.now()), // Store the current timestamp as a human-readable date string
-    });
+    setNewTask({ title: event.target.value });
   }
 
   // Event handler for form submit - adds new task and resets input state
   function handleSubmit(event) {
     event.preventDefault();
 
-    addTask(newTask);
+    handleAddtask(newTask);
 
-    setNewTask({ title: "", date: null });
+    setNewTask({ title: "" });
   }
 
   return (
-    <div className="flex justify-center">
+    <div className={`flex justify-center ${isTabletOrMobile && 'm-3'}`}>
       <form onSubmit={handleSubmit} className={styles.taskForm}>
         <Language />
 
@@ -72,14 +56,14 @@ export function TaskForm({ addTask }) {
 
           {/* Render mobile/tablet button if on smaller viewport */}
           {isTabletOrMobile && (
-            <button className={styles.taskFormButtonMobile}>
+            <button type="submit" className={styles.taskFormButtonMobile}>
               <AiOutlineSend size={25} />
             </button>
           )}
 
           {/* Render desktop/laptop button if on larger viewport */}
           {isDesktopOrLaptop && (
-            <button className={styles.taskFormButtonLaptop}>
+            <button type="submit" className={styles.taskFormButtonLaptop}>
               <span>{t("create")}</span>
             </button>
           )}
