@@ -1,0 +1,58 @@
+.taskForm {
+    position: relative;
+    height: 50px;
+    bottom: 25px;
+    width: 100%;
+    max-width: 736px;
+    display: flex;
+    gap: 8px;
+}
+
+.taskForm input {
+    height: 100%;
+    width: 100%;
+    color: var(--white-color-one);
+    background: var(--bg-color-dark-two);
+    border: 1px solid var(--bg-color-dark-one);
+    border-radius: var(--main-border-radius);
+    padding: 0 16px;
+    font-size: 16px;
+}
+
+.taskForm input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.taskForm input::placeholder {
+    color: var(--bg-color-dark-three);
+}
+
+.taskForm button.taskFormButtonMobile, 
+.taskForm button.taskFormButtonLaptop {
+    height: 100%;
+    background: var(--primary-color);
+    color: var(--white-color-one);
+    border: none;
+    border-radius: var(--main-border-radius);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.taskFormContainer {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+}
+
+.taskList {
+    height: 50px;
+    color: var(--white-color-one);
+    background: var(--bg-color-dark-two);
+    max-width: 736px;
+    padding: 0 1rem;
+    margin: 0 auto;
+}

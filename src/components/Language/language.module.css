@@ -1,0 +1,39 @@
+.FlagsSelectOption {
+    padding-bottom: 0px !important;
+    border-radius: var(--main-border-radius) !important; 
+}
+
+.FlagsSelectOption button {
+    height: 100%;
+    color: var(--bg-color-dark-three);
+    background: var(--bg-color-dark-two);
+    width: 105px;
+}
+
+.FlagsSelectOption button:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.FlagsSelectOption ul {
+    background: var(--bg-color-dark-one);
+}
+
+.FlagsSelectOption ul li {
+    margin: 0;
+    padding: 8px 10px;
+}
+
+.FlagsSelectOption ul li:hover {
+    background-color: var(--bg-color-dark-two);
+}
+
+/* Styles pour les écrans inférieurs à 768px */
+@media (max-width: 767px) {
+    .FlagsSelectOption {
+        position: fixed !important;
+        top: 16px;
+        right: 0;
+        height: 45px;
+        margin: 0 1rem;
+    }
+}
