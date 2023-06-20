@@ -1,0 +1,4 @@
+const LOCAL_STORAGE_TASKS_KEY = "todo:tasks";
+const LOCAL_STORAGE_LANG_KEY = "todo:lang";
+
+export { LOCAL_STORAGE_LANG_KEY, LOCAL_STORAGE_TASKS_KEY };
