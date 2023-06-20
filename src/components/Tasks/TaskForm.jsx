@@ -13,13 +13,10 @@ import { useTranslation } from "react-i18next";
 // Components
 import { Language } from "../Language/Language";
 
-// Utilities
-import { parseTimeStamp } from "../../utilities/utilities";
-
 // CSS
 import styles from "./tasks.module.css";
 
-export function TaskForm({ addTask }) {
+export function TaskForm({ handleAddtask }) {
   // Declare state for new task and set initial values
   const [newTask, setNewTask] = useState({ title: "", date: null });
 
@@ -32,24 +29,20 @@ export function TaskForm({ addTask }) {
 
   // Event handler for input change - updates the new task input state when the input value changes
   function handleInputChange(event) {
-    setNewTask({
-      ...newTask,
-      title: event.target.value,
-      date: parseTimeStamp(Date.now()), // Store the current timestamp as a human-readable date string
-    });
+    setNewTask({ title: event.target.value });
   }
 
   // Event handler for form submit - adds new task and resets input state
   function handleSubmit(event) {
     event.preventDefault();
 
-    addTask(newTask);
+    handleAddtask(newTask);
 
-    setNewTask({ title: "", date: null });
+    setNewTask({ title: "" });
   }
 
   return (
-    <div className="flex justify-center">
+    <div className={`flex justify-center ${isTabletOrMobile && 'm-3'}`}>
       <form onSubmit={handleSubmit} className={styles.taskForm}>
         <Language />
 
