@@ -27,10 +27,9 @@
     color: var(--bg-color-dark-three);
 }
 
-.taskForm button.taskFormButtonMobile, 
+/* .taskForm button.taskFormButtonMobile, 
 .taskForm button.taskFormButtonLaptop {
     height: 100%;
-    background: var(--primary-color);
     color: var(--white-color-one);
     border: none;
     border-radius: var(--main-border-radius);
@@ -40,6 +39,10 @@
     padding: 0 16px;
     font-size: 14px;
     font-weight: bold;
+} */
+
+.taskForm button {
+    overflow: unset !important;
 }
 
 .taskFormContainer {
