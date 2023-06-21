@@ -1,4 +1,7 @@
 {
     "add_task": "Add new task",
-    "create": "Create"
+    "create": "Create",
+    "created_tasks": "Created tasks",
+    "completed_task": "Compteled tasks",
+    "of": "of"
 }

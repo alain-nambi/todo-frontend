@@ -32,3 +32,8 @@ button {
 #changeLanguage:focus {
     outline: 2px solid #1E6F9F;
 }
+
+.max-736px.m-auto {
+    margin: 0 auto;
+    max-width: 736px;
+}

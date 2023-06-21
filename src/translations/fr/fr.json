@@ -1,4 +1,7 @@
 {
     "add_task": "Ajouter une tâche",
-    "create": "Créer"
+    "create": "Créer",
+    "created_tasks": "Tâches créées",
+    "completed_task": "Tâches complétées",
+    "of": "sur"
 }

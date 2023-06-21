@@ -1,51 +1,46 @@
-// Importing necessary dependencies
-import styles from "./tasks.module.css";
-import { Checkbox, Button } from "@material-tailwind/react";
-import { CiEdit, CiTrash } from "react-icons/ci";
-
 // Responsive Pages
 import { useMediaQuery } from "react-responsive";
+
+import { TaskItem } from "./TaskItem";
+import { useTranslation } from "react-i18next";
 
 // Creating TaskList component
 export function TaskList({ tasks }) {
   // Use responsive media queries to determine if device is desktop/laptop or tablet/mobile
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isMobile = useMediaQuery({query: "(max-width: 480px)"})
+  const tasksQuantity = tasks.length;
+  const completedTask = tasks.filter((task) => task.isCompleted).length;
+
+  // Set up internationalization using react-i18next
+  const { t } = useTranslation("common");
 
   return (
     // Using flexbox to align list items vertically
-    <ul className={`flex flex-col text-center ${isTabletOrMobile && 'm-3'}`}>
+    <ul
+      className={`flex flex-col text-center ${isTabletOrMobile ? "m-3" : "m-auto"} max-736px`}
+    >
+      <div className="flex items-center justify-between mb-6">
+        <p className={`text-blue-600 font-bold ${isMobile ? "text-xs" : "text-sm"}  items-center gap-1.5 flex`}>
+          {t("created_tasks")}
+
+          <span className="text-white text-xs bg-blue-gray-900 px-2 py-1 rounded-full">
+            {tasksQuantity}
+          </span>
+        </p>
+
+        <p className={`text-green-600 font-bold ${isMobile ? "text-xs" : "text-sm"} items-center gap-1.5 flex`}>
+          {t("completed_task")}
+
+          <span className="text-white text-xs bg-blue-gray-900 px-2 py-1 rounded-full">
+            {completedTask} {t("of")} {tasksQuantity}
+          </span>
+        </p>
+      </div>
+
       {/* Mapping over each task in array */}
-      {tasks.map((task, taskIndex) => (
-        
-        <li key={taskIndex} className="mb-2">
-
-          {/* Adding CSS class to taskList div */}
-          <div className={`${styles.taskList} mb-1 flex items-center justify-between rounded-md`}>
-
-            {/* Rendering the Checkbox component */}
-            <Checkbox key={taskIndex} color="blue" />
-
-            {/* Displaying task title */}
-            <span>{task.title}</span>
-
-            {/* Adding gap between buttons */}
-            <div className="flex items-center gap-2">
-
-              {/* Adding Edit button */}
-              <Button variant="gradient" title="Modifier" className="p-2" color="blue">
-                {/* Rendering the Edit icon */}
-                <CiEdit size={20} />
-              </Button>
-
-              {/* Adding Delete button */}
-              <Button variant="gradient" title="Supprimer" className="p-2" color="red">
-                {/* Rendering the Trash icon */}
-                <CiTrash size={20} />
-              </Button>
-
-            </div>
-          </div>
-        </li>
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task} />
       ))}
     </ul>
   );

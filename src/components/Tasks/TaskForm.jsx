@@ -13,6 +13,8 @@ import { useTranslation } from "react-i18next";
 // Components
 import { Language } from "../Language/Language";
 
+import { Button } from "@material-tailwind/react";
+
 // CSS
 import styles from "./tasks.module.css";
 
@@ -56,16 +58,12 @@ export function TaskForm({ handleAddtask }) {
 
           {/* Render mobile/tablet button if on smaller viewport */}
           {isTabletOrMobile && (
-            <button type="submit" className={styles.taskFormButtonMobile}>
-              <AiOutlineSend size={25} />
-            </button>
+            <Button color="blue" type="submit" ripple={false}> {t("create")} </Button>
           )}
 
           {/* Render desktop/laptop button if on larger viewport */}
           {isDesktopOrLaptop && (
-            <button type="submit" className={styles.taskFormButtonLaptop}>
-              <span>{t("create")}</span>
-            </button>
+            <Button color="blue" type="submit" ripple={false}> {t("create")} </Button>
           )}
         </div>
       </form>
