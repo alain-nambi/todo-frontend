@@ -5,7 +5,7 @@ import styles from "./tasks.module.css";
 import { Checkbox, Button } from "@material-tailwind/react";
 import { CiEdit, CiTrash } from "react-icons/ci";
 
-export const TaskItem = ({ task }) => {
+export const TaskItem = ({ task, onDelete }) => {
   return (
     <li key={task.id} className="mb-2">
       <div
@@ -34,6 +34,7 @@ export const TaskItem = ({ task }) => {
             title="Supprimer"
             className="p-2"
             color="red"
+            onClick={() => onDelete(task.id)}
           >
             <CiTrash size={20} />
           </Button>
