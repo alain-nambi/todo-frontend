@@ -1,24 +1,12 @@
 import React from "react";
 import { useState } from "react";
-
-// Icons
-import { AiOutlineSend } from "react-icons/ai";
-
-// Responsive Pages
 import { useMediaQuery } from "react-responsive";
-
-// Internationalization
 import { useTranslation } from "react-i18next";
-
-// Components
-import { Language } from "../Language/Language";
-
+import { LanguageSelector } from "../Language/Language";
 import { Button } from "@material-tailwind/react";
-
-// CSS
 import styles from "./tasks.module.css";
 
-export function TaskForm({ handleAddtask }) {
+export function TaskForm({ handleAddTask }) {
   // Declare state for new task and set initial values
   const [newTask, setNewTask] = useState({ title: "", date: null });
 
@@ -46,7 +34,7 @@ export function TaskForm({ handleAddtask }) {
   return (
     <div className={`flex justify-center ${isTabletOrMobile && 'm-3'}`}>
       <form onSubmit={handleSubmit} className={styles.taskForm}>
-        <Language />
+        <LanguageSelector />
 
         <div className={styles.taskFormContainer}>
           <input
