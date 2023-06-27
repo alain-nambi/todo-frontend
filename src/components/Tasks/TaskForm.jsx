@@ -26,7 +26,7 @@ export function TaskForm({ handleAddTask }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    handleAddtask(newTask);
+    handleAddTask(newTask);
 
     setNewTask({ title: "" });
   }

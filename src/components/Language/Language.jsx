@@ -49,7 +49,7 @@ export const LanguageSelector = () => {
   return (
     <ReactFlagsSelect
       // Apply CSS module class name for styling
-      className={styles.LanguageSelector} 
+      className={styles.FlagsSelectOption} 
       selected={currentLang}
       onSelect={handleLanguageChange}
       countries={["US", "FR", "MG"]}
