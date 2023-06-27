@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import { LanguageSelector } from "../Language/Language";
 import { Button } from "@material-tailwind/react";
 import styles from "./tasks.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function TaskForm({ handleAddTask }) {
   // Declare state for new task and set initial values
@@ -26,35 +28,65 @@ export function TaskForm({ handleAddTask }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    handleAddTask(newTask);
+    if (newTask.title.trim() != "") {
+      handleAddTask(newTask);
+      setNewTask({ title: "" });
 
-    setNewTask({ title: "" });
+      toast(`Tâche ${newTask.title} créee`, {
+        type: "success",
+        position: "top-center",
+        autoClose: 2000,
+      });
+    } else {
+      toast("Le nom du tâche ne doit pas être vide", {
+        type: "warning",
+        position: "top-right",
+      });
+    }
   }
 
   return (
-    <div className={`flex justify-center ${isTabletOrMobile && 'm-3'}`}>
-      <form onSubmit={handleSubmit} className={styles.taskForm}>
-        <LanguageSelector />
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <div className={`flex justify-center ${isTabletOrMobile && "m-3"}`}>
+        <form onSubmit={handleSubmit} className={styles.taskForm}>
+          <LanguageSelector />
 
-        <div className={styles.taskFormContainer}>
-          <input
-            type="text"
-            placeholder={t("add_task")}
-            onChange={handleInputChange}
-            value={newTask.title}
-          />
+          <div className={styles.taskFormContainer}>
+            <input
+              type="text"
+              placeholder={t("add_task")}
+              onChange={handleInputChange}
+              value={newTask.title}
+            />
 
-          {/* Render mobile/tablet button if on smaller viewport */}
-          {isTabletOrMobile && (
-            <Button color="blue" type="submit" ripple={false}> {t("create")} </Button>
-          )}
+            {/* Render mobile/tablet button if on smaller viewport */}
+            {isTabletOrMobile && (
+              <Button color="blue" type="submit" ripple={false}>
+                {t("create")}
+              </Button>
+            )}
 
-          {/* Render desktop/laptop button if on larger viewport */}
-          {isDesktopOrLaptop && (
-            <Button color="blue" type="submit" ripple={false}> {t("create")} </Button>
-          )}
-        </div>
-      </form>
-    </div>
+            {/* Render desktop/laptop button if on larger viewport */}
+            {isDesktopOrLaptop && (
+              <Button color="blue" type="submit" ripple={false}>
+                {t("create")}
+              </Button>
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
