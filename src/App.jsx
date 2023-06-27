@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <Header />
-      <TaskForm handleAddtask={addTask} />
+      <TaskForm handleAddTask={addTask} />
       <TaskList tasks={tasks} />
     </>
   );
