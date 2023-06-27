@@ -3,5 +3,9 @@
     "create": "Créer",
     "created_tasks": "Tâches créées",
     "completed_task": "Tâches complétées",
-    "of": "sur"
+    "of": "sur",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "delete_confirmation": "Confirmation de suppression",
+    "delete_task_title": "Voulez-vous supprimer la tâche"
 }

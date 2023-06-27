@@ -3,5 +3,9 @@
     "create": "Anampy",
     "created_tasks": "Asa noforonina",
     "completed_task": "Asa vita",
-    "of": "amin'ny"
+    "of": "amin'ny",
+    "cancel": "Tsia",
+    "confirm": "Eny",
+    "delete_confirmation": "Fangatahana famafana asa",
+    "delete_task_title": "Tena hamafa an'ilay asa"
 }

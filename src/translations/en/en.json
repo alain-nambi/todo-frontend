@@ -3,5 +3,9 @@
     "create": "Create",
     "created_tasks": "Created tasks",
     "completed_task": "Compteled tasks",
-    "of": "of"
+    "of": "of",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete_confirmation": "Delete confirmation",
+    "delete_task_title": "Are you confirm to delete"
 }
