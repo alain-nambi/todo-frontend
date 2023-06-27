@@ -43,6 +43,11 @@ function App() {
       },
     ]);
   };
+
+  const deleteTaskById = (taskId) => {
+    const newTasks = tasks.filter(task => task.id !== taskId)
+    setTaskAndSave(newTasks)
+  }
   
   // Use useEffect to fetch tasks from local storage and update state when component mounts
   useEffect(() => {
@@ -55,7 +60,7 @@ function App() {
     <>
       <Header />
       <TaskForm handleAddTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onDelete={deleteTaskById}/>
     </>
   );
 }

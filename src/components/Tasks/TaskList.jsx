@@ -5,7 +5,7 @@ import { TaskItem } from "./TaskItem";
 import { useTranslation } from "react-i18next";
 
 // Creating TaskList component
-export function TaskList({ tasks }) {
+export function TaskList({ tasks, onDelete }) {
   // Use responsive media queries to determine if device is desktop/laptop or tablet/mobile
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const isMobile = useMediaQuery({query: "(max-width: 480px)"})
@@ -40,7 +40,7 @@ export function TaskList({ tasks }) {
 
       {/* Mapping over each task in array */}
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem key={task.id} task={task} onDelete={onDelete} />
       ))}
     </ul>
   );
