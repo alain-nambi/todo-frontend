@@ -44,23 +44,46 @@ function App() {
     ]);
   };
 
+  // Function to delete a task by its ID
   const deleteTaskById = (taskId) => {
-    const newTasks = tasks.filter(task => task.id !== taskId)
-    setTaskAndSave(newTasks)
-  }
-  
+    // Create a new tasks array by filtering out tasks with IDs not matching taskId
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    // Update the tasks list with the new array and save
+    setTaskAndSave(newTasks);
+  };
+
+  // Function to toggle the completed status of a task by its ID
+  const toggleCompletedTaskById = (taskId) => {
+    // Create a new tasks array by iterating over the existing tasks
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        // If the ID matches taskId, create a new task object with the isCompleted value inverted
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task; // Otherwise, return the task as it is
+    });
+    // Update the tasks list with the new array and save
+    setTaskAndSave(newTasks);
+  };
+
   // Use useEffect to fetch tasks from local storage and update state when component mounts
   useEffect(() => {
     loadSavedTasks();
   }, []);
-
 
   // Render the header, task form and task list components
   return (
     <>
       <Header />
       <TaskForm handleAddTask={addTask} />
-      <TaskList tasks={tasks} onDelete={deleteTaskById}/>
+      <TaskList
+        tasks={tasks}
+        onDelete={deleteTaskById}
+        onComplete={toggleCompletedTaskById}
+      />
     </>
   );
 }
