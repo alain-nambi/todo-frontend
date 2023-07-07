@@ -33,12 +33,12 @@ export const TaskItem = ({ task, onDelete, onComplete }) => {
           <Checkbox
             color="blue"
             checked={task.isCompleted ? true : false}
-            onClick={() => onComplete(task.id)}
+            onChange={() => onComplete(task.id)}
           />
 
           {/* Displaying task title */}
           <span
-            className={task.isCompleted ? "line-through" : ""}
+            className={`${task.isCompleted ? "line-through" : ""} w-full`}
             onClick={() => onComplete(task.id)}
           >
             {task.title}
