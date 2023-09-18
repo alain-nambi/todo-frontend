@@ -66,6 +66,7 @@ export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
               className="p-2"
               color="blue"
               onClick={handleOpenUpdateTaskModal}
+              disabled={task.isCompleted ? true : false}
             >
               <CiEdit size={20} />
             </Button>
