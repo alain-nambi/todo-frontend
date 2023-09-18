@@ -7,5 +7,7 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "delete_confirmation": "Delete confirmation",
-    "delete_task_title": "Are you confirm to delete"
+    "delete_task_title": "Are you confirm to delete",
+    "update_confirmation": "Update task name",
+    "task_name": "Task name"
 }

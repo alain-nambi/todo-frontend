@@ -7,5 +7,7 @@
     "cancel": "Tsia",
     "confirm": "Eny",
     "delete_confirmation": "Fangatahana famafana asa",
-    "delete_task_title": "Tena hamafa an'ilay asa"
+    "delete_task_title": "Tena hamafa an'ilay asa",
+    "update_confirmation": "Anova ny anarany asa",
+    "task_name": "Anarany asa"
 }

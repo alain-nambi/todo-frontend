@@ -7,5 +7,7 @@
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "delete_confirmation": "Confirmation de suppression",
-    "delete_task_title": "Voulez-vous supprimer la tâche"
+    "delete_task_title": "Voulez-vous supprimer la tâche",
+    "update_confirmation": "Changer le nom de la tâche",
+    "task_name": "Nom de la tâche"
 }

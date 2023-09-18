@@ -52,6 +52,20 @@ function App() {
     setTaskAndSave(newTasks);
   };
 
+  const updateTaskById = (taskId, updateTaskName) => {
+    // Find the task that you want to update in the tasks array
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+  
+    // Update the task object at the found index with the new data
+    tasks[taskIndex] = {
+      ...tasks[taskIndex],
+      title: updateTaskName,
+    };
+  
+    // Call the setTaskAndSave function to save the updated task data to local storage and update the state of the component
+    setTaskAndSave([...tasks]);
+  };
+
   // Function to toggle the completed status of a task by its ID
   const toggleCompletedTaskById = (taskId) => {
     // Create a new tasks array by iterating over the existing tasks
@@ -83,6 +97,7 @@ function App() {
         tasks={tasks}
         onDelete={deleteTaskById}
         onComplete={toggleCompletedTaskById}
+        onUpdate={updateTaskById}
       />
     </>
   );
