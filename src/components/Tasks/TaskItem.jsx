@@ -4,15 +4,20 @@ import { React, useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import { Checkbox, Button } from "@material-tailwind/react";
 import { CiEdit, CiTrash } from "react-icons/ci";
-import { DeleteTaskModal } from "../Modal/Modal";
+import { DeleteTaskModal, UpdateTaskModal } from "../Modal/Modal";
 
-export const TaskItem = ({ task, onDelete, onComplete }) => {
+export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
   const [openDeleteTaskModal, setOpenDeleteTaskModal] = useState(false);
+  const [openUpdateTaskModal, setOpenUpdateTaskModal] = useState(false);
 
   // Function to toggle the delete task modal
   const handleOpenDeleteTaskModal = () => {
     setOpenDeleteTaskModal(!openDeleteTaskModal);
   };
+
+  const handleOpenUpdateTaskModal = () => {
+    setOpenUpdateTaskModal(!openUpdateTaskModal)
+  }
 
   return (
     <>
@@ -22,6 +27,14 @@ export const TaskItem = ({ task, onDelete, onComplete }) => {
         openDeleteTaskModal={openDeleteTaskModal}
         handleOpenDeleteTaskModal={handleOpenDeleteTaskModal}
         onDelete={onDelete}
+      />
+
+      {/* Update Task Modal */}
+      <UpdateTaskModal
+        task={task}
+        openUpdateTaskModal={openUpdateTaskModal}
+        handleOpenUpdateTaskModal={handleOpenUpdateTaskModal}
+        onUpdate={onUpdate}
       />
 
       {/* Task item */}
@@ -52,6 +65,7 @@ export const TaskItem = ({ task, onDelete, onComplete }) => {
               title="Modifier"
               className="p-2"
               color="blue"
+              onClick={handleOpenUpdateTaskModal}
             >
               <CiEdit size={20} />
             </Button>
