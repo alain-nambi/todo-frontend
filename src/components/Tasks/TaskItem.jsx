@@ -11,7 +11,7 @@ export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
   const [openDeleteTaskModal, setOpenDeleteTaskModal] = useState(false);
   const [openUpdateTaskModal, setOpenUpdateTaskModal] = useState(false);
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
 
   // Function to toggle the delete task modal
   const handleOpenDeleteTaskModal = () => {
@@ -54,7 +54,7 @@ export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
 
           {/* Displaying task title */}
           <span
-            className={`${task.isCompleted ? "line-through" : ""} w-full ${isTabletOrMobile && "text-sm"}`}
+            className={`${task.isCompleted ? "line-through" : ""} w-full ${isMobile && "text-xs"}`}
             onClick={() => onComplete(task.id)}
           >
             {task.title}
