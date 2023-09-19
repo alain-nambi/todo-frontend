@@ -5,10 +5,13 @@ import styles from "./tasks.module.css";
 import { Checkbox, Button } from "@material-tailwind/react";
 import { CiEdit, CiTrash } from "react-icons/ci";
 import { DeleteTaskModal, UpdateTaskModal } from "../Modal/Modal";
+import { useMediaQuery } from "react-responsive";
 
 export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
   const [openDeleteTaskModal, setOpenDeleteTaskModal] = useState(false);
   const [openUpdateTaskModal, setOpenUpdateTaskModal] = useState(false);
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   // Function to toggle the delete task modal
   const handleOpenDeleteTaskModal = () => {
@@ -51,7 +54,7 @@ export const TaskItem = ({ task, onDelete, onComplete, onUpdate }) => {
 
           {/* Displaying task title */}
           <span
-            className={`${task.isCompleted ? "line-through" : ""} w-full`}
+            className={`${task.isCompleted ? "line-through" : ""} w-full ${isTabletOrMobile && "text-sm"}`}
             onClick={() => onComplete(task.id)}
           >
             {task.title}
